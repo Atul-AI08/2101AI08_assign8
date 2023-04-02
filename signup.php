@@ -16,6 +16,10 @@ $email = $_POST["email"];
 $password = $_POST["pswd"];
 $cnf_pswd = $_POST["cnfpswd"];
 
+if (!preg_match('/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/', $email)){
+  echo "Error: Invalid email";
+}
+
 $sql = "SELECT * FROM users WHERE email='$email'";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
